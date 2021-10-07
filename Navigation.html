@@ -1,26 +1,25 @@
 <!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Responsive Sidebar Menu | CodingLab</title>
+    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
     <link rel="stylesheet" href="style.css" />
-    <!-- Boxicons CDN lINK -->
+    <!-- Boxicons CDN Link -->
     <link
-      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <div class="sidebar">
-      <div class="logo_content">
-        <div class="logo">
-          <i class="bx bxl-c-plus-plus"></i>
-          <div class="logo_name">CodingLab</div>
-        </div>
+      <div class="logo-details">
+        <i class="bx bxl-c-plus-plus icon"></i>
+        <div class="logo_name">CodingLab</div>
         <i class="bx bx-menu" id="btn"></i>
       </div>
-      <ul class="nav_list">
+      <ul class="nav-list">
         <li>
           <i class="bx bx-search"></i>
           <input type="text" placeholder="Search..." />
@@ -59,7 +58,7 @@
             <i class="bx bx-folder"></i>
             <span class="links_name">File Manager</span>
           </a>
-          <span class="tooltip">File Manager</span>
+          <span class="tooltip">Files</span>
         </li>
         <li>
           <a href="#">
@@ -82,34 +81,44 @@
           </a>
           <span class="tooltip">Setting</span>
         </li>
-      </ul>
-      <div class="profile_content">
-        <div class="profile">
-          <div class="profile_details">
-            <img src="picture/doga.jpg" alt="" />
+        <li class="profile">
+          <div class="profile-details">
+            <img src="Picture/doga.jpg" alt="profileImg" />
             <div class="name_job">
-              <div class="name">Douglas Oliviera</div>
+              <div class="name">Douglas Oliveira</div>
               <div class="job">Systems Analyst</div>
             </div>
           </div>
-          <i class="bx bx-log-out" id="log-out"></i>
-        </div>
-      </div>
+          <i class="bx bx-log-out" id="log_out"></i>
+        </li>
+      </ul>
     </div>
-    <div class="home_content">
-      <div class="text">Home Content</div>
-    </div>
-
+    <section class="home-section">
+      <div class="text">Dashboard</div>
+    </section>
     <script>
-      let btn = document.querySelector('#btn')
       let sidebar = document.querySelector('.sidebar')
+      let closeBtn = document.querySelector('#btn')
       let searchBtn = document.querySelector('.bx-search')
 
-      btn.onclick = function () {
-        sidebar.classList.toggle('active')
-      }
-      searchBtn.onclick = function () {
-        sidebar.classList.toggle('active')
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('open')
+        menuBtnChange() //calling the function(optional)
+      })
+
+      searchBtn.addEventListener('click', () => {
+        // Sidebar open when you click on the search iocn
+        sidebar.classList.toggle('open')
+        menuBtnChange() //calling the function(optional)
+      })
+
+      // following are the code to change sidebar button(optional)
+      function menuBtnChange() {
+        if (sidebar.classList.contains('open')) {
+          closeBtn.classList.replace('bx-menu', 'bx-menu-alt-right') //replacing the iocns class
+        } else {
+          closeBtn.classList.replace('bx-menu-alt-right', 'bx-menu') //replacing the iocns class
+        }
       }
     </script>
   </body>
